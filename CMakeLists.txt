@@ -4,3 +4,4 @@ project(qtRE)
 
 add_subdirectory(regex_tester/src)
 add_subdirectory(qlineedit_progress/src)
+add_subdirectory(qcombobox_completion/src)
