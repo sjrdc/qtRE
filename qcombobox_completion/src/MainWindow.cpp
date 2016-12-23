@@ -1,6 +1,7 @@
 #include "MainWindow.h"
 
 #include <QComboBox>
+#include <QCompleter>
 #include <QDebug>
 #include <QGridLayout>
 #include <QLabel>
@@ -11,6 +12,7 @@ MainWindow::MainWindow(QWidget *parent, Qt::WindowFlags flags) :
 {
   setupUI();
   combobox_->setEditable(true);
+  combobox_->completer()->setCompletionMode(QCompleter::InlineCompletion);
   createConnections();
 }
 
@@ -29,7 +31,7 @@ void MainWindow::setupUI()
 void MainWindow::createConnections()
 {
   typedef void (QComboBox::*QComboStringSignal)(const QString &);
-connect(combobox_, static_cast<void(QComboBox::*)(const QString &)>(&QComboBox::currentIndexChanged),
+  connect(combobox_, static_cast<void(QComboBox::*)(const QString &)>(&QComboBox::currentIndexChanged),
 	this, &MainWindow::onComboChanged);
 }
 
